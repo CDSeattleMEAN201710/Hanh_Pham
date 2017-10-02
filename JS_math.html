@@ -1,0 +1,73 @@
+<html>
+    <body>
+        <script>
+            function zero_negativity(arr){                
+                for (let i = 0; i < arr.length; i++){
+                    if (arr[i] < 0){
+                        return false;
+                    }
+                }
+            return true;
+            }
+        let test1 = zero_negativity([1,2,-3])
+        console.log(test1)
+
+        //Math 2 
+
+            function is_even(num){
+                if(num % 2 == 0){
+                    return true;
+                }else{
+                return false;
+            }
+        }
+           
+        let test2 = is_even(2)
+        console.log(test2)
+
+        //Math 3
+
+            function how_many_even(arr){
+               let sum = 0;
+                for (let i = 0 ; i < arr.length ; i++){
+                    if (arr[i] % 2 == 0){
+                        sum = sum + 1;
+                    }                                
+                }
+                return sum;  
+            }
+        let test3 = how_many_even([1,2,3,4,6])
+        console.log(test3)
+            
+        //Math 4
+            function create_dummy_array(n){
+               const arr = [];
+                for (let i = 0 ; i < n ; i++){
+                  let y = Math.floor(Math.random() * 10);
+                   arr.push(y);                   
+                }
+            return arr;
+            }
+        let test4 = create_dummy_array(7)
+        console.log(test4)
+            
+        //Math 5
+            function random_choice(arr){
+                for (let i = 0; i < arr.length; i++){
+                    arr[i] = Math.floor(Math.random() * arr.length)
+                }
+                return arr;
+            }
+        let test5 = random_choice([1,2,3,5,6,7])
+        console.log(test5)
+
+            //Math 5 
+        function randomChoice(arr){
+            let index = Math.floor(Math.random() * arr.length);
+            return arr[index];
+        }
+        let test6 = randomChoice([1,4,5,6])
+        console.log(test6)
+        </script>
+    </body>
+</html>
