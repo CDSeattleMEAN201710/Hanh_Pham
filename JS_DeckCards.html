@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Deck of Cards</title>
+</head>
+<body>
+	<script>
+		class Card {
+	constructor(suit, rank){
+		this.suit = suit
+		this.rank = rank
+	}
+}
+
+function Deck(){
+	let cards = []
+
+	this.shuffle = () => {
+		for(let i=0; i<cards.length; i++){
+			let random_index = Math.floor(Math.random()*cards.length)
+			let temp = cards[i]
+			cards[i] = cards[random_index]
+			cards[random_index] = temp
+		}
+		return this;
+
+	}
+
+	this.deal = () => cards.pop()
+
+	this.reset = () => {
+		cards = []
+
+		let ranks = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
+		let suits = ["Hearts", "Spades", "Diamonds", "Clubs"]
+
+		for(let suit of suits){
+			for(let rank of ranks){
+				cards.push(new Card(suit, rank))
+			}
+		}
+		return this;
+	}
+
+	this.reset();
+
+	this.show_deck = () => cards.slice();
+	
+}
+
+	class Player {
+		constructor(name){
+		this.name = name;
+		this.hand = [];
+	}
+
+	sayName(){
+				console.log(`Player name: ${this.name}`);
+				return this;
+			}
+
+
+	draw(deck){
+		this.hand.push(deck.deal());
+		return this;
+	}
+
+	discard(){
+		this.hand.pop();
+		return this;
+	}
+
+}
+
+let my_deck = new Deck()
+my_deck.shuffle()
+console.log(my_deck)
+my_deck.reset().shuffle()
+console.log(my_deck)
+
+console.log(my_deck.cards)
+
+for(let i=0; i<4; i++){
+	console.log(my_deck.deal())
+}
+
+var player2 = new Player('Hanh');
+player2.sayName().draw(my_deck).draw(my_deck).draw(my_deck).draw(my_deck).discard()
+console.log(player2)
+
+	</script>
+
+</body>
+</html>
