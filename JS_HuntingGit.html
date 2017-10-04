@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            
+    </head>
+    <body>
+        <button id="myButton"> Show my name</button>
+        <h2>My Name is: </h2>
+            <script>
+                $(document).ready(
+                    function(){
+                    $('button').click(function(){
+                        $.get("https://api.github.com/users/myhanhpham25", displayName);
+                    });
+
+                    function displayName(data){
+                        let name = data.login
+                        console.log(name)
+                        $("h2").html(name)
+                        };
+                    });
+
+             </script>
+    </body>    
+</html>
