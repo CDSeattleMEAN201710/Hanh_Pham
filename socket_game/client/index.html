@@ -10,28 +10,53 @@
                 
                 const socket = io.connect()
                 
-				$("button").click(() => {
+				$("#button1").click(() => {
 					socket.emit("some sort of click counter")
                 })
-                
+				
+				$("#button2").click(() => {
+					socket.emit("some sort of click counter2")
+				})
+				
+				$("#button3").click(() => {
+					socket.emit("some sort of click counter3")
+				})
+
                 player1= socket.on("counter", number_of_clicks => {
 					$("#click_counter").text(number_of_clicks)
                 })
                 
-                player2 = socket.on("counter", number_of_clicks => {
-					$("#click_counter").text(number_of_clicks)
+                player2 = socket.on("counter2", number_of_clicks => {
+					$("#click_counter2").text(number_of_clicks)
+				})
+
+				Score = socket.on("counter3", number_of_clicks => {
+					$("#click_counter3").text(number_of_clicks)
 				})
 			})
 		</script>
 	</head>
 	<body>
 		<h1>Rock, Paper, Scissor!</h1>
-    
+		<div>
+		<h3>Score: <span id="click_counter3"> </span></h3>
+		</div>
         <div>
-        <p id="click_counter">Player 1</p>
-        <h1 id="player2">Player 2</h1>
-        </div>
-    
-		<button>Rock, Paper, Scissor, SHOOT!!!</button>
+		<h3>Player 1: <span id="click_counter"> </span></h3>
+		<button id="button1"> Player 1 SHOOT!</button>
+		</div>
+		<div>
+		<h3>Player 2: <span id="click_counter2"> </span></h3>
+		<button id="button2">Player 2 SHOOT!</button>
+		</div>
+		<div>
+		<button id="button3" type="button">Keep Score</button>
+		</div>
+		<div>
+		<a href="/"><button id="button4" type="button">Play Again!</button></a>
+		</div>
+		
+	
+		
 	</body>
 </html>
