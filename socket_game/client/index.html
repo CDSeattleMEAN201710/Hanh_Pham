@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sockets</title>
+		<script src="jquery/dist/jquery.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript">
+			$(document).ready(() => {
+                console.log("jQuery!")
+                
+                const socket = io.connect()
+                
+				$("button").click(() => {
+					socket.emit("some sort of click counter")
+                })
+                
+                player1= socket.on("counter", number_of_clicks => {
+					$("#click_counter").text(number_of_clicks)
+                })
+                
+                player2 = socket.on("counter", number_of_clicks => {
+					$("#click_counter").text(number_of_clicks)
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<h1>Rock, Paper, Scissor!</h1>
+    
+        <div>
+        <p id="click_counter">Player 1</p>
+        <h1 id="player2">Player 2</h1>
+        </div>
+    
+		<button>Rock, Paper, Scissor, SHOOT!!!</button>
+	</body>
+</html>
