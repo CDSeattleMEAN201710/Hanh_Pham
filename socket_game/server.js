@@ -31,10 +31,10 @@ socket.on("join", function(socket){
     console.log("User joined" + room)
 })
 
-player1 = io.emit("counter", rand1)//what we will see when we load the page. 
-player2 = io.emit("counter2", rand2)
+player1 = io.emit("playerone", rand1)//what we will see when we load the page. 
+player2 = io.emit("playertwo", rand2)
 
-	socket.on("some sort of click counter", () => {
+	socket.on("for player one", () => {
 
         rand1 = Math.floor(Math.random()*3) + 1
 
@@ -50,11 +50,11 @@ player2 = io.emit("counter2", rand2)
         round1 ++
         console.log("This is round:" , round1)
         console.log("player1")
-        io.emit("counter", rand1)
+        io.emit("playerone", rand1)
     
     })
     
-    socket.on("some sort of click counter2", () => {
+    socket.on("for player two", () => {
         
         rand2 = Math.floor(Math.random()*3) + 1
 
@@ -72,23 +72,22 @@ player2 = io.emit("counter2", rand2)
         console.log("This is round:" , round2)
 
         console.log("player2")
-        io.emit("counter2", rand2)
+        io.emit("playertwo", rand2)
     })
 
-    socket.on("some sort of click counter3", () => {
+    socket.on("scoring", () => {
        
-        if (rand1 === rand2){
+        if (rand1 == rand2){
             results = "It's a tie, play again!!!"
         }
         else if(rand1 > rand2){
             results = "Player 1 Wins!"
         }
-        else{
-            results = "Player 1 LOSER!"
+        else if(rand2 > rand1){
+            results = "Player 2 Wins!"
         }
-
-       
-        io.emit("counter3", results)
+      
+        io.emit("scoring", results)
     })
 
 

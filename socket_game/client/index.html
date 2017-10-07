@@ -11,27 +11,27 @@
                 const socket = io.connect()
                 
 				$("#button1").click(() => {
-					socket.emit("some sort of click counter")
+					socket.emit("for player one")
                 })
 				
 				$("#button2").click(() => {
-					socket.emit("some sort of click counter2")
+					socket.emit("for player two")
 				})
 				
-				$("#button3").click(() => {
-					socket.emit("some sort of click counter3")
+				$("#button_score").click(() => {
+					socket.emit("scoring")
 				})
 
-                player1= socket.on("counter", number_of_clicks => {
-					$("#click_counter").text(number_of_clicks)
+                socket.on("playerone", number_of_clicks => {
+					$("#click1").text(number_of_clicks)
                 })
                 
-                player2 = socket.on("counter2", number_of_clicks => {
-					$("#click_counter2").text(number_of_clicks)
+                socket.on("playertwo", number_of_clicks => {
+					$("#click2").text(number_of_clicks)
 				})
 
-				Score = socket.on("counter3", number_of_clicks => {
-					$("#click_counter3").text(number_of_clicks)
+				socket.on("scoring", number_of_clicks => {
+					$("#click3").text(number_of_clicks)
 				})
 			})
 		</script>
@@ -39,21 +39,21 @@
 	<body>
 		<h1>Rock, Paper, Scissor!</h1>
 		<div>
-		<h3>Score: <span id="click_counter3"> </span></h3>
+		<h3>Score: <span id="click3"> </span></h3>
 		</div>
         <div>
-		<h3>Player 1: <span id="click_counter"> </span></h3>
+		<h3>Player 1: <span id="click1"> </span></h3>
 		<button id="button1"> Player 1 SHOOT!</button>
 		</div>
 		<div>
-		<h3>Player 2: <span id="click_counter2"> </span></h3>
+		<h3>Player 2: <span id="click2"> </span></h3>
 		<button id="button2">Player 2 SHOOT!</button>
 		</div>
 		<div>
-		<button id="button3" type="button">Keep Score</button>
+		<button id="button_score" type="button">Keep Score</button>
 		</div>
 		<div>
-		<a href="/"><button id="button4" type="button">Play Again!</button></a>
+		<a href="/"><button id="button_reset" type="button">Play Again!</button></a>
 		</div>
 		
 	
