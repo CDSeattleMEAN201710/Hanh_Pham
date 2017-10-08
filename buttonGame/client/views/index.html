@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sockets</title>
+		<script src="jquery/dist/jquery.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript">
+			$(document).ready(() => {
+                console.log("jQuery!")
+                
+                const socket = io.connect()
+                
+				$("#button_count").click(() => {
+					socket.emit("clickers")
+                })
+
+                $("#button_reset").click(() => {
+					socket.emit("refresh")
+                })
+
+                socket.on("click_count", number_of_clicks => {
+					$("#display").text(number_of_clicks)
+                })
+			})
+		</script>
+	</head>
+	<body>
+		<div>
+		<h1>The button has been pushed <span id="display"></span> times(s).</h1>
+		</div>
+
+        <div>
+		<p>Push the button to update the count!</p>
+		<button id="button_count" style="background-color: turquoise"> Push the EPIC button!</button>
+		</div>
+	
+		<div>
+		<button id="button_reset" style="background-color: red"> Reset Count</button>
+		</div>
+	
+	</body>
+</html>
