@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animalDashboard</title>
+</head>
+<body>
+    <h1> Update <%= animal.name %> Information!</h1>
+    <form action="/mongooses/update" method="post">  
+    Name: <input type="text" name="name" value="<%= animal.name %>"><br>
+    Color: <input type="text" name="color" value="<%= animal.color %>"><br>
+    Animal Types: <select name="types">
+            <option value="mammal">Mammal</option>
+            <option value="reptile">Reptile</option>
+            <option value="bird">Birds</option>
+            <option value="insect">Insect</option>
+            <option value="aquatic">Aquatic</option>
+            </select><br>
+    Fun Facts: <input type="text" name="description" value="<%= animal.description %>"><br>
+    <input type="submit" name="submit" value="Update Animal">
+    
+    </form>
+
+    <p><button onclick="location.href='/mongooses/destory/<%= animal.id %>'">Delete Animal</button>
+</body>
+</html>

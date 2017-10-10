@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animalDashboard</title>
+</head>
+<body>
+      <h1> Welcome to the <%= animal.name %>'s Information Page! </h1>
+    <h3>Color: <%= animal.color %></h3>
+    <h3>Types: <%= animal.types %></h3>
+    <h3>Fun Facts: <%= animal.description %></h3>
+
+    <p><button onclick="location.href='/mongooses/edit/<%= animal.id %>'">Edit Information</button>
+    <p><button onclick="location.href='/'">Go to Dashboard</button>
+</body>
+</html>

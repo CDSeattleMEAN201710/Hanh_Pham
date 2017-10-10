@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>animalDashboard</title>
+</head>
+<body>
+    <h1> Add animal to the Dashboard!</h1>
+    <form action="/mongooses/add" method="post">  
+    Name: <input type="text" name="name" placeholder="Enter animal name"><br>
+    Color: <input type="text" name="color" placeholder="Enter animal name"><br>
+    Animal Types: <select name="types">
+            <option value="mammal">Mammal</option>
+            <option value="reptile">Reptile</option>
+            <option value="bird">Birds</option>
+            <option value="insect">Insect</option>
+            <option value="aquatic">Aquatic</option>
+            </select><br>
+    Fun Facts: <input type="text" name="description" placeholder="Enter a description"><br>
+    <input type="submit" name="submit" value="Add Animal">
+
+    
+    
+    </form>
+</body>
+</html>

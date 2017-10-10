@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Animal Dashboard</title>
+    </head>
+    <body>
+        <h1>Animal Dashboard</h1>
+        <ul>
+            <% for(var i=0; i <animals.length; i++) { %>
+                <li><%= animals[i].name %> 
+                <button onclick="location.href='/mongooses/show/<%= animals[i].id %>'">Learn More!</button> </li>
+            <% } %>
+
+
+
+
+  <p> <button onclick="location.href='/mongooses/new'">Add an Animal</button></p>
+
+
+
+
+        
+        
+    </body>
+</html>
