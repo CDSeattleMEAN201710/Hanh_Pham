@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Message Board</title>
+    </head>
+    <body>
+        <h1> The Dojo Message Board</h1>
+        <div>
+            <form action="/create" method="post">  
+            <label>Name: </label> <input type="text" name="name" placeholder="Enter your Name"><br>
+            <label>Message: </label> <input type="text" name="message" placeholder="Enter your message"><br>
+            <input type="submit" name="submit" value="Post Message">   
+            </form>
+        </div>    
+        
+            <% if(typeof(errors) != 'undefined') { %>
+            <% for(var x in errors) { %>
+            <h3><%= errors[x].message %></h3>
+            <% } %>
+            <% } %>
+       
+        <div>    
+
+            <% for(var i=0; i <messages.length; i++) { %>
+                <h3>Name: <%= messages[i].name %></h3>
+                <h3>Message: <%= messages[i].message %></h3>
+
+            <% for(var x=0; x <messages[i].comments.length ; x++) { %>   
+                <h4>Name: <%= messages[i].comments[x].name %></h4>
+                <h4>Comment: <%= messages[i].comments[x].comment %></h4>
+            
+                <% } %>                
+                
+            <form action = "/comment_post/<%= messages[i].id %>" method="post">
+                <label>Name: </label> <input type="text" name="name" placeholder="Enter your Name"><br>
+                <label>Comment: </label> <input type="text" name="comment" placeholder="Enter your Comment"><br>
+                <input type="submit" name="submit" value="Post Comment">            
+            </form>
+
+            <p><button onclick="location.href='/destroy/<%= messages[i].id %>'"> Delete Message</button></p> 
+        </div>
+        <% } %> 
+           
+    </body>
+
+</html>
