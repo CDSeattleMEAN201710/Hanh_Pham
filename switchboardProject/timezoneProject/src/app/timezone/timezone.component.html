@@ -1,0 +1,13 @@
+<h1>{{title}}</h1>
+
+<div>
+	<button (click)='pacificTime()'>PST</button>
+	<button (click)='mountainTime()'>MST</button>
+	<button (click)= 'centralTime()'>CST</button>
+	<button (click)= 'easternTime()'>EST</button>
+	<button (click)= 'clearTime()'>Clear</button>
+</div>
+<div>
+	<p>{{date | date: 'fullDate'}} {{date | date : 'mediumTime'}}</p>
+
+</div>
