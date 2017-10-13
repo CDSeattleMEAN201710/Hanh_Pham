@@ -1,0 +1,141 @@
+<h1> Registration</h1>
+
+<div>
+<h2>Account Information</h2>
+{{message}}
+
+<form name="MyForm" novalidate (submit)="onSubmit()" >
+
+	<label>*First Name:</label>
+	<input 
+    type="text" 
+    name="firstName" 
+    required 
+    minlength="2" 
+    maxlength="24"
+    [(ngModel)]="user.firstName"
+    #firstName='ngModel'
+  />
+
+{{ firstName.errors | json }}
+{{ firstName.valid | json }}
+<div *ngIf="!firstName.valid">First name required.</div><br>
+
+  	<label>*Last Name: </label>	
+	<input 
+    type="text" 
+    name="lastName" 
+    required 
+    minlength="2" 
+    maxlength="24"
+    [(ngModel)]="user.lastName"
+    #lastName='ngModel'
+  />
+
+{{ lastName.errors | json }}
+{{ lastName.valid | json }}
+<div *ngIf="!lastName.valid">Last name required</div><br>
+
+	<label>*Email: </label> 
+	<input 
+    type="email" 
+    name="email" 
+    required 
+    minlength="4" 
+    maxlength="24"
+    [(ngModel)]="user.email"
+    #email='ngModel'
+  />
+
+{{ email.errors | json }}
+{{ email.valid | json }}
+<div *ngIf="!email.valid">Email required</div><br>
+
+	<label>*Password: </label>
+	<input 
+    type="text" 
+    name="password" 
+    required 
+    minlength="8" 
+    maxlength="24"
+    pattern="^([a-zA-Z0-9@*#]{8,15})$"
+    [(ngModel)]="user.password"
+    #password='ngModel'
+  />
+
+{{ password.errors | json }}
+{{ password.valid | json }}
+<div *ngIf="!password.valid">Need a password</div><br>
+
+	<label>*Confirm Password: </label>
+	<input type="text" 
+	name="c_password"
+	required 
+    minlength="4" 
+    maxlength="24"
+    [(ngModel)]="user.c_password"
+    #c_password='ngModel'
+	>
+
+{{ c_password.errors | json }}
+{{ c_password.valid | json }}
+<div *ngIf="!c_password.valid">confirm your password</div><br>
+
+	<label>*Street Address: </label>
+	<input type="text" 
+	name="address"
+	required 
+    minlength="4" 
+    maxlength="24"
+    [(ngModel)]="user.address"
+    #address='ngModel'
+    >
+{{ address.errors | json }}
+{{ address.valid | json }}
+<div *ngIf="!address.valid">Address required</div><br>
+
+	<label>Unit/Apt #</label>
+	<input type="text" 
+	name="unit"
+    ><br>
+
+	<label>*City </label>
+	<input type="text" 
+	name="city"
+	required 
+    minlength="4" 
+    maxlength="24"
+    [(ngModel)]="user.city"
+    #city='ngModel'
+    >
+{{ city.errors | json }}
+{{ city.valid | json }}
+<div *ngIf="!city.valid">City required</div><br>
+
+	<label>*State</label>
+	<input type="text" 
+	name="state"
+	required 
+    minlength="2" 
+    maxlength="10"
+    [(ngModel)]="user.state"
+    #state='ngModel'
+    >
+{{ state.errors | json }}
+{{ state.valid | json }}
+<div *ngIf="!state.valid">State required</div><br>
+
+	<label>* I'm feeling lucky:</label>
+	<input type="radio" name="lucky" value="true" checked>Yes
+	<input type="radio" name="lucky" value="false">No<br>
+
+	<input *ngIf="firstName.valid && lastName.valid && email.valid && password.valid && user.c_password && address.valid && city.valid && state.valid"  type="submit" value="Register" >
+
+</form>	
+
+{{user | json}}
+
+
+
+
+</div>
