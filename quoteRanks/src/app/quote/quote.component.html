@@ -1,0 +1,7 @@
+<app-quote-create (addQuote)="createQuote($event)"></app-quote-create>
+
+
+<p><input type="text" name="search" [(ngModel)]="search" placeholder="Search...."></p>
+
+<h1>Quotes List</h1>
+<app-quote-details *ngFor="let quote of quotes | filter: search" [thisQuote]="quote"></app-quote-details>

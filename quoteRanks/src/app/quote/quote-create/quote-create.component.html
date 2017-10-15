@@ -1,0 +1,13 @@
+<h1> Add a Quote</h1>
+
+<form #quoteForm="ngForm" (submit)="createQuote()">
+
+<p><input type="text" name="quote" id="quoteBox" required minlength="4" [(ngModel)]="newQuote.quote" #newQuote_quote="ngModel">
+<span *ngIf="newQuote_quote.errors">Quote is required.</span>
+</p>
+<p><input type="text" name="author" id="authorBox" required minlength="1" [(ngModel)]="newQuote.author" #newQuote_author="ngModel">
+<span *ngIf="newQuote_author.errors">Author is required.</span>
+</p>
+<p><input type="submit" value="Add Quote" [disabled]="!quoteForm.valid"></p>
+
+</form>
