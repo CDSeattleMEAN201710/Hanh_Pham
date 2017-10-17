@@ -1,0 +1,12 @@
+<h1>Cars</h1>
+<h3> Hello, {{ firstName }} !</h3>
+
+
+<app-car-create (add_a_car)="create_car($event)"></app-car-create> 
+<!-- ($event) is a built in variable that holds information about the event that occured. In this all the information from the child. 
+ -->
+ <p><input type="text" name="search" [(ngModel)]="search" placeholder="Search...."></p>
+<app-cars-detail *ngFor="let car of cars | filter: search" [this_car]="car"></app-cars-detail>
+
+
+
