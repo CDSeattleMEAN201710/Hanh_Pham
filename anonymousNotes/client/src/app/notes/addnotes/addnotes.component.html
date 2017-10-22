@@ -1,0 +1,26 @@
+<div>
+	<h1>Anonymous Notes</h1>
+	<form #noteForm="ngForm" (submit)="create()">
+
+	<p>Note: <input type="text" name="note" 
+		[(ngModel)]="new_note.note" 
+		required 
+		minlength="3" 
+		#note="ngModel"/>
+
+		<span *ngIf="!note.valid">Note is required!!!</span>
+
+
+	<p><input type="submit"  value="Create" [disabled]="!noteForm.valid"></p>
+	</form>
+
+	{{ new_note | json }}
+</div>
+<div class="list">
+
+<div *ngFor="let note of notes | orderByPipe:'-createdAt'">
+	<p>Noted on : {{note.createdAt | date: "short" }}</p>
+	<p>{{ note.note }} </p><p>{{ note._id }} </p>
+	<p><button (click)="destroy(note._id)">Delete</button></p>
+</div>
+</div>
